@@ -12,3 +12,9 @@ export async function todasAsRifas() {
 
    return retorno.rows
 }
+
+export async function postarResultado(dia,numero) {
+    const query = (`INSERT INTO historico_rifas (dia, numero)
+    VALUES ($1,$2);`)
+    
+}
