@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { postarResultado, todasAsRifas } from "../repositories/rifa-repositorie";
+import { attResultado, deletarResultado, postarResultado, todasAsRifas } from "../repositories/rifa-repositorie";
 import httpStatus from "http-status";
 
 
@@ -26,3 +26,27 @@ export async function postRifa(req: Request, res: Response) {
         res.status(httpStatus.INTERNAL_SERVER_ERROR).send(':(')
     }
 }
+
+export async function deleteRifa(req: Request, res: Response) {
+    const {id} = req.body
+    
+      try {
+         await deletarResultado(id)
+          res.sendStatus(200)
+      } catch (error) {
+          console.log(error);
+          res.status(httpStatus.INTERNAL_SERVER_ERROR).send(':(')
+      }
+  }
+
+  export async function putRifa(req: Request, res: Response) {
+    const {id,dia,numero} = req.body
+    
+      try {
+         await attResultado(id,dia,numero)
+          res.sendStatus(200)
+      } catch (error) {
+          console.log(error);
+          res.status(httpStatus.INTERNAL_SERVER_ERROR).send(':(')
+      }
+  }

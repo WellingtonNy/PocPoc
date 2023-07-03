@@ -18,3 +18,16 @@ export async function postarResultado(dia:string, numero:number) {
     VALUES ($1,$2);`)
     await connection.query(query,[dia,numero])  
 }
+
+export async function deletarResultado(id:number) {
+    const query = (`DELETE FROM historico_rifas
+    WHERE id=$1;`)
+    await connection.query(query,[id])  
+}
+
+export async function attResultado(id: number,dia:string, numero:number) {
+    const query = (`UPDATE historico_rifas
+    SET dia = $2, numero = $3
+    WHERE id=$1;`)
+    await connection.query(query,[id,dia,numero])  
+}
