@@ -13,8 +13,8 @@ export async function todasAsRifas() {
    return retorno.rows
 }
 
-export async function postarResultado(dia,numero) {
+export async function postarResultado(dia:string, numero:number) {
     const query = (`INSERT INTO historico_rifas (dia, numero)
     VALUES ($1,$2);`)
-    
+    await connection.query(query,[dia,numero])  
 }
