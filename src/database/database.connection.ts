@@ -11,7 +11,7 @@ const connection = new Pool({
   host: DB_HOST || "localhost",
   port: +(DB_PORT) || 5432,
   user: DB_USER || 'postgres',
-  password: DB_PASSWORD || '26623150',
+  password: DB_PASSWORD || 'postgres',
   database: DB_NAME || 'rifa'
 })
 
